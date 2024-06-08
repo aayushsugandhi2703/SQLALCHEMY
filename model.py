@@ -2,14 +2,13 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class task(db.Model):
-    id = db.column(db.integer, primary_key =True)
-    title = db.column(db.string(100))
-    description = db.column(db.string(200))
-    done = db.column(db.boolean)
+class task(db.Model): 
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    description = db.Column(db.String(200))
 
-def __repr__(self):
-    return f'<Task({self.title}:{self.description})>'
+    def __repr__(self): 
+        return f'<Task(id={self.id}, title={self.title}, description={self.description})>'
 
 def create_table():
     db.create_all()
