@@ -10,3 +10,6 @@ class task(db.Model):
 
 def __repr__(self):
     return f'<Task({self.title}:{self.description})>'
+
+def create_table():
+    db.create_all()
