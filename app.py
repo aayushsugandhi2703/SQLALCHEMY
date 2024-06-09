@@ -25,13 +25,25 @@ def create():
     flash("Task added")
     return redirect(url_for('index'))
 
-@app.route('/delete/<int:id>')
+@app.route('/delete/<int:id>', methods=['POST'])
 def delete(id):
     remove = Task.query.get(id) 
     if remove:
         db.session.delete(remove)
         db.session.commit()
         flash("Task deleted")
+    else:
+        flash("Task not found")
+    return redirect(url_for('index'))
+
+@app.route('/update/<int:id>', methods=['POST'])
+def updatee(id):
+    change = Task.query.get(id)
+    if change:
+        change.title = request.form.get('title')
+        change.description = request.form.get('description')
+        db.session.commit()
+        flash("Task updated")
     else:
         flash("Task not found")
     return redirect(url_for('index'))
