@@ -1,3 +1,4 @@
+/* General styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -14,16 +15,21 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.container form {
+/* Form styling */
+.container form,
+.create form {
     display: flex;
     flex-direction: column;
 }
 
-.container label {
+.container label,
+.create label {
     margin-bottom: 5px;
 }
 
-.container input[type="text"] {
+.container input[type="text"],
+.create input[type="text"],
+.tasks input[type="text"] {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -31,7 +37,9 @@ body {
     font-size: 16px;
 }
 
-.container button[type="submit"] {
+.container button[type="submit"],
+.create button,
+.tasks button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -42,7 +50,9 @@ body {
     transition: background-color 0.3s;
 }
 
-.container button[type="submit"]:hover {
+.container button[type="submit"]:hover,
+.create button:hover,
+.tasks button:hover {
     background-color: #0056b3;
 }
 
@@ -76,7 +86,8 @@ body {
 }
 
 .tasks form {
-    margin-top: 10px;
+    display: inline-block;
+    margin-right: 10px;
 }
 
 .tasks input[type="text"] {
@@ -84,60 +95,15 @@ body {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: calc(100% - 20px); /* Adjust width to fit the container */
+    width: calc(100% - 20px); 
 }
 
 .tasks button {
     background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 .tasks button:hover {
     background-color: #45a049;
-}
-
-.tasks form[method="POST"] {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-/* Create form styling */
-.create {
-    margin-bottom: 20px;
-}
-
-.create h2 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.create form {
-    display: flex;
-    flex-direction: column;
-}
-
-.create input[type="text"] {
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.create button {
-    background-color: #008CBA;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.create button:hover {
-    background-color: #007B9A;
 }
 
 /* Flash messages styling */
