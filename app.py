@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify, url_for, redirect, render_template, flash
-from model import db, Task  # Corrected import statement
+from model import db, Task 
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///task.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret_key')
 
 db.init_app(app)
 
