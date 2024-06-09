@@ -45,3 +45,110 @@ body {
 .container button[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+/* Task list styling */
+.tasks {
+    margin-top: 20px;
+}
+
+.tasks h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.tasks ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tasks li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tasks label {
+    font-weight: bold;
+}
+
+.tasks form {
+    margin-top: 10px;
+}
+
+.tasks input[type="text"] {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 20px); /* Adjust width to fit the container */
+}
+
+.tasks button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tasks button:hover {
+    background-color: #45a049;
+}
+
+.tasks form[method="POST"] {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Create form styling */
+.create {
+    margin-bottom: 20px;
+}
+
+.create h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.create form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create input[type="text"] {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create button {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.create button:hover {
+    background-color: #007B9A;
+}
+
+/* Flash messages styling */
+.messages {
+    margin-top: 20px;
+}
+
+.message-success {
+    color: green;
+}
+
+.message-error {
+    color: red;
+}
