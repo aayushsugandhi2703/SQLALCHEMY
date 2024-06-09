@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="create">
+        <form action="{{ url_for('create') }}" method="POST">
+            <label for="title">ENTER THE TASK</label><br>
+            <input type="text" name="title" placeholdedr="Enter the task" required><br>
+            <label for="description">DESCRIPTION</label><br>
+            <input type="text" name="description" placeholder="Enter the description"><br>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</body>
+
+</html>
