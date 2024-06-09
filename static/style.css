@@ -5,7 +5,7 @@ body {
     padding: 0;
 }
 
-.create {
+.container {
     max-width: 400px;
     margin: 50px auto;
     background-color: #fff;
@@ -14,16 +14,16 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.create form {
+.container form {
     display: flex;
     flex-direction: column;
 }
 
-.create label {
+.container label {
     margin-bottom: 5px;
 }
 
-.create input[type="text"] {
+.container input[type="text"] {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -31,7 +31,7 @@ body {
     font-size: 16px;
 }
 
-.create button[type="submit"] {
+.container button[type="submit"] {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -42,6 +42,6 @@ body {
     transition: background-color 0.3s;
 }
 
-.create button[type="submit"]:hover {
+.container button[type="submit"]:hover {
     background-color: #0056b3;
 }

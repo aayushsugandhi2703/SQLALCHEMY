@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="create">
+    <div class="container">
         <form action="{{ url_for('create') }}" method="POST">
             <label for="title">ENTER THE TASK</label><br>
             <input type="text" name="title" placeholdedr="Enter the task" required><br>
@@ -18,6 +18,18 @@
             <button type="submit">Create</button>
         </form>
     </div>
+    <div class="tasks">
+        <h2>Tasks</h2>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                <label>TASK - {{ task.title }}</label> <br>
+                <label>DESCRIPTION - {{ task.description }}</label>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
 </body>
 
 </html>
