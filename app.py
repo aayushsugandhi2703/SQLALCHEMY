@@ -12,8 +12,8 @@ def index():
     tasks = task.query.all()  
     return render_template('index.html', tasks=tasks)
 
-@app.route('/add', methods=['POST'])
-def add():
+@app.route('/create', methods=['POST'])
+def create():
     title = request.form.get('title')
     description = request.form.get('description')
 
