@@ -1,15 +1,15 @@
 from flask import Flask, request, jsonify, url_for, redirect, render_template, flash
-from model import db, task  # Corrected import statement
+from model import db, Task  # Corrected import statement
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///task.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
 @app.route('/')
 def index():
-    tasks = task.query.all()  
+    tasks = Task.query.all()  
     return render_template('index.html', tasks=tasks)
 
 @app.route('/create', methods=['POST'])
@@ -17,7 +17,7 @@ def create():
     title = request.form.get('title')
     description = request.form.get('description')
 
-    added = task(title=title, description=description)  
+    added = Task(title=title, description=description)  
     db.session.add(added)
     db.session.commit()
     flash("Task added")
@@ -25,7 +25,7 @@ def create():
 
 @app.route('/delete/<int:id>')
 def delete(id):
-    remove = task.query.get(id) 
+    remove = Task.query.get(id) 
     if remove:
         db.session.delete(remove)
         db.session.commit()
@@ -35,4 +35,6 @@ def delete(id):
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+     with app.app_context():
+        db.create_all() 
+     app.run(debug=True)
