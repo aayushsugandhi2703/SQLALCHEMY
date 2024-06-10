@@ -22,27 +22,35 @@ def index():
 # this is for creating the task
 @app.route('/create', methods=['POST'])
 def create():
-    title = request.form.get('title')
-    description = request.form.get('description')
+    try:
+        title = request.form.get('title')
+        description = request.form.get('description')
 
-    added = Task(title=title, description=description)  
+        added = Task(title=title, description=description)  
 
-    db.session.add(added)
-    db.session.commit()
-    flash("Task added")
-    return redirect(url_for('index'))
+        db.session.add(added)
+        db.session.commit()
+        flash("Task added")
+        return redirect(url_for('index'))                                          # adding the task and returning to the index page if no error occurs
+    except Exception as e:
+        flash("An error occurred while adding task. Please try again later.")
+        return redirect(url_for('index'))                                          #returning to the index page if error occurs
 
 #this is for deleting the task
 @app.route('/delete/<int:id>', methods=['POST'])
 def delete(id):
-    remove = Task.query.get(id) 
-    if remove:
-        db.session.delete(remove)
-        db.session.commit()
-        flash("Task deleted")
-    else:
-        flash("Task not found")
-    return redirect(url_for('index'))
+    try:
+        remove = Task.query.get(id) 
+        if remove:
+            db.session.delete(remove)
+            db.session.commit()
+            flash("Task deleted")
+        else:
+            flash("Task not found")
+        return redirect(url_for('index'))                                          # deletes the task and returning to the index page if no error occurs
+    except Exception as e:
+        flash("An error occurred while deleting task. Please try again later.")
+        return redirect(url_for('index'))                                          #returning to the index page if error occurs
 
 #this is for updating the task
 @app.route('/update/<int:id>', methods=['POST'])
