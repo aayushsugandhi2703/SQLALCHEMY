@@ -55,15 +55,19 @@ def delete(id):
 #this is for updating the task
 @app.route('/update/<int:id>', methods=['POST'])
 def updatee(id):
-    change = Task.query.get(id)
-    if change:
-        change.title = request.form.get('title')
-        change.description = request.form.get('description')
-        db.session.commit()
-        flash("Task updated")
-    else:
-        flash("Task not found")
-    return redirect(url_for('index'))
+    try:
+        change = Task.query.get(id)
+        if change:
+            change.title = request.form.get('title')
+            change.description = request.form.get('description')
+            db.session.commit()
+            flash("Task updated")
+        else:
+            flash("Task not found")
+        return redirect(url_for('index'))                                          # updates the task and returning to the index page if no error occurs
+    except Exception as e:
+        flash("An error occurred while updating task. Please try again later.")
+        return redirect(url_for('index'))                                          #returning to the index page if error occurs
 
 #
 if __name__ == '__main__':
