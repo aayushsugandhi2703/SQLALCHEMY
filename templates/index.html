@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="{{ url_for('create') }}" method="POST">
+            <label for="title">ENTER THE TASK</label><br>
+            <input type="text" name="title" placeholdedr="Enter the task" required><br>
+            <label for="description">DESCRIPTION</label><br>
+            <input type="text" name="description" placeholder="Enter the description"><br>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+    <div class="tasks">
+        <h2>Tasks</h2>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                <label>TASK - {{ task.title }}</label> <br>
+                <label>DESCRIPTION - {{ task.description }}</label><br>
+
+                <form action="{{ url_for('updatee', id=task.id)}}" method="POST" style="display: inline;">
+                    <input type="text" name="title" value="{{ task.title }}" required>
+                    <input type="text" name="description" value="{{ task.description }}" required><br>
+                    <button type="submit">Update</button>
+                </form>
+                <form action="{{ url_for('delete', id=task.id) }}" method="POST" style="display: inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+
+</html>
