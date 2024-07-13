@@ -3,7 +3,7 @@ from model import db, Task
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///task.db'                          #creted and linked the database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///task.db'                          #create a new databse file named task.db which will store all the informations
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False                                 #to suppress the warning
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret_key')             #to implement the secret key
 
