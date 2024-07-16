@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, flash, redirect, url_for
-from newmodel import Session, Info
+from newmodel import Session,base, Info
 from form import createform
 import os
 
@@ -12,23 +12,24 @@ session = Session()
 
 @app.route('/', methods=['GET'])
 def index():
-    form = createform()
+    forms = createform()
     try:
         info = session.query(Info).all()
-        return render_template('new.html', form=form, info=info)
+        for item in info:
+            print(f"Retrieved from DB: {item.name} - {item.age}")
+        return render_template('new.html', forms=forms, info=info)
     except Exception as e:
         flash("An error occurred while fetching info. Please try again later.")
-        return render_template('new.html', form=form, info=[])
+        return render_template('new.html', forms=forms, info=[])
 
-@app.route('/create', methods=['POST'])
+@app.route('/register', methods=['GET'])
 def create():
-    form = createform()
-    if form.validate_on_submit():
+    forms = createform()
+    if forms.validate_on_submit():
         try:
-            id = form.id.data
-            name = form.name.data
-            age = form.age.data
-            add = Info(id=id, name=name, age=age)
+            name = forms.name.data
+            age = forms.age.data
+            add = Info( name=name, age=age)
             session.add(add)
             session.commit()
             flash("Info added")

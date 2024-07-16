@@ -6,28 +6,31 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST">
-        {{form.hidden_tag()}}
+    <form method="GET">
+        {{forms.hidden_tag()}}
         <div>
-            {{form.id.label}}
-            {{form.id}}
-            {% for error in form.id.errors %}
-                <span style="color: red;">[{{error}}]</span>
-            {% endfor %}SSS
-        </div>
-        <div>
-            {{form.name.label}}
-            {{form.name}}
-            {% for error in form.name.errors %}
+            {{forms.name.label}}
+            {{forms.name}}
+            {% for error in forms.name.errors %}
                 <span style="color: red;">[{{error}}]</span>
             {% endfor %}
         </div>
         <div>
-            {{form.age.label}}
-            {{form.age}}
-            {% for error in form.age.errors %}
+            {{forms.age.label}}
+            {{forms.age}}
+            {% for error in forms.age.errors %}
                 <span style="color: red;">[{{error}}]</span>
             {% endfor %}
+            <div>
+                {{forms.Submit.label}}
+                {{forms.Submit}}
+            </div>
     </form>
+    <h2>info list</h2>
+    <ul>
+        {% for item in info %}
+            <li>{{ item.name }} ({{ item.age }} years old)</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

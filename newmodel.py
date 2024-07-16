@@ -11,6 +11,6 @@ class Info(base):
     name = Column(String)
     age = Column(Integer)
 
-Session= sessionmaker(engine)
+Session= sessionmaker(bind=engine)
 
 base.metadata.create_all(engine)

@@ -6,7 +6,6 @@ class createform(FlaskForm):
     id = IntegerField('Title', validators=[DataRequired()])
     name = TextAreaField('Description', validators=[DataRequired()])
     age = IntegerField('Description', validators=[DataRequired()])
-
     Submit = SubmitField('Submit')
 
     
