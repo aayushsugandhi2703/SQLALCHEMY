@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, flash, redirect, url_for
-from newmodel import Session,base, Info
+from newmodel import Session, base, Info
 from form import createform
 import os
 
@@ -22,24 +22,24 @@ def index():
         flash("An error occurred while fetching info. Please try again later.")
         return render_template('new.html', forms=forms, info=[])
 
-@app.route('/register', methods=['GET'])
+@app.route('/register', methods=['POST'])
 def create():
     forms = createform()
     if forms.validate_on_submit():
         try:
             name = forms.name.data
             age = forms.age.data
-            add = Info( name=name, age=age)
+            add = Info(name=name, age=age)
             session.add(add)
             session.commit()
             flash("Info added")
-            return redirect(url_for('index'))  # Redirect to index after adding info
+            return redirect(url_for('index'))
         except Exception as e:
             flash("An error occurred while adding info. Please try again later.")
-            return redirect(url_for('index'))  # Redirect to index if database operation fails
+            return redirect(url_for('index'))
     else:
         flash("Form validation failed. Please check your inputs.")
-        return redirect(url_for('index'))  # Redirect to index if form validation fails
+        return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
