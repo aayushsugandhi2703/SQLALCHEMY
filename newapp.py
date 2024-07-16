@@ -16,7 +16,7 @@ def index():
     try:
         info = session.query(Info).all()
         for item in info:
-            print(f"Retrieved from DB: {item.name} - {item.age}")
+            print(f"Retrieved from DB: {item.id} - {item.name} - {item.age}")
         return render_template('new.html', forms=forms, info=info)
     except Exception as e:
         flash("An error occurred while fetching info. Please try again later.")

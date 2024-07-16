@@ -3,9 +3,9 @@ from wtforms import Form, StringField, TextAreaField,IntegerField, SubmitField
 from wtforms.validators import DataRequired
 
 class createform(FlaskForm):
-    name = TextAreaField('Description', validators=[DataRequired()])
-    age = IntegerField('Description', validators=[DataRequired()])
+    name = TextAreaField('Name', validators=[DataRequired()])
+    age = IntegerField('Age', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-
-    
+def creatingform():
+    return createform()
