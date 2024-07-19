@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info Form</title>
+</head>
+<body>
+    <h1>Info Form</h1>
+    <form method="POST" action="{{ url_for('create') }}">
+        {{ forms.hidden_tag() }}
+        <p>
+            {{ forms.name.label }}<br>
+            {{ forms.name(size=32) }}<br>
+            {% for error in forms.name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ forms.age.label }}<br>
+            {{ forms.age(size=32) }}<br>
+            {% for error in forms.age.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ forms.submit() }}
+        </p>
+    </form>
+
+    <h2>Info List</h2>
+    <ul>
+        {% for item in info %}
+            <li>{{ item.id }} - {{ item.name }} - {{ item.age }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
